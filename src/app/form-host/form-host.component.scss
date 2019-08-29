@@ -47,6 +47,39 @@ select:-webkit-autofill:focus {
             justify-content: center;
         }
     }
+    /deep/ p-autoComplete {
+        input::-webkit-input-placeholder {
+            color: white;
+            text-align: left !important;
+            padding-right: 0px !important;
+            font-weight: lighter !important;
+            font-size: 13px;
+        }
+        input:-moz-placeholder {
+            color: white;
+            text-align: left !important;
+            padding-right: 0px !important;
+            font-weight: lighter !important;
+            font-size: 13px;
+        }
+        input::-moz-placeholder {
+            color: white;
+            text-align: left !important;
+            padding-right: 0px !important;
+            font-weight: lighter !important;
+            font-size: 13px;
+        }
+        input:-ms-input-placeholder {
+            color: white;
+            text-align: left !important;
+            padding-right: 0px !important;
+            font-weight: lighter !important;
+            font-size: 13px;
+        }
+    }
+    /deep/ .ui-autocomplete-input {
+        padding-left: 0px !important;
+    }
 }
 @media screen and (min-width: 400px) and (max-width: 600px){
     /* Placeholder Dropdown */
@@ -1119,20 +1152,37 @@ label {
     text-overflow: ellipsis;
     overflow: hidden;  
     white-space: nowrap;
+    padding-left: 120px;
 }
 
 /deep/ p-autoComplete {
     input::-webkit-input-placeholder {
         color: white;
+        text-align: right;
+        padding-right: 60px;
+        font-weight: lighter;
+        font-style: italic;
     }
     input:-moz-placeholder {
         color: white;
+        text-align: right;
+        padding-right: 60px;
+        font-weight: lighter;
+        font-style: italic;
     }
     input::-moz-placeholder {
         color: white;
+        text-align: right;
+        padding-right: 60px;
+        font-weight: lighter;
+        font-style: italic;
     }
     input:-ms-input-placeholder {
         color: white;
+        text-align: right;
+        padding-right: 60px;
+        font-weight: lighter;
+        font-style: italic;
     }
 }
 

@@ -38,6 +38,12 @@ export class SignupService {
 
 	}
 
+	addHostParticipant(user){
+		return this.http.post(SignupService.url + '/exchange_student_hosts', user, this.headers())
+			.toPromise()
+			.then((res) => res.json());
+	}
+
 	addGeParticipant(user){
 
 		let headers = new Headers();

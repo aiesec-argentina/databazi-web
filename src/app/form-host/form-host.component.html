@@ -3,9 +3,6 @@
     <form *ngIf='!loading' [formGroup]='signUp' (keydown.enter)='submit()' class='forms'>
       <div class='row' id='signUp'>
         <div class="col-sm">
-          <h1>
-            Inscreva-se:
-          </h1>
           <div class="alert alert-warning alert-dismissible fade show animated fadeIn" role="alert" *ngIf="invalidEmail">
             <button type="button" class="close" data-dismiss="alert" aria-label="Close">
               <i class="far fa-times-circle fa-lg"></i>
@@ -15,7 +12,6 @@
             </p>
           </div>
           <div class='col-12'>
-
             <div class="form-group">
               <div class="input-group">
                 <div class="input-group-prepend desktop">
@@ -39,37 +35,9 @@
                 </div>
               </div>
             </div>
-
           </div>
+
           <div class='col-12'>
-
-            <div class="form-group">
-              <div class="input-group">
-                <div class="input-group-prepend desktop">
-                  <div class="input-group-text">
-                    <i class="fas fa-envelope"></i>E-mail
-                  </div>
-                </div>
-                <!-- desktop -->
-                <input type="email" class="form-control desktop" placeholder="Relaxa, nós também não gostamos de spam" [(ngModel)]="user.email"
-                  formControlName="email" name="email" required>
-
-                <!-- mobile -->
-                <i class="fas fa-envelope mobile mobile-icon"></i>
-                <input type="email" class="form-control mobile" placeholder="E-mail" (blur)="checkEmail()" [(ngModel)]="user.email" formControlName="email"
-                  name="email" required>
-                <div class="valid-feedback">
-                  <i class="fas fa-check"></i>
-                </div>
-                <div *ngIf="isValid('email')" class='error-message'>
-                  Preencha com o seu email.
-                </div>
-              </div>
-            </div>
-
-          </div>
-          <div class='col-12'>
-
             <div class="form-group">
               <div class="input-group">
                 <div class="input-group-prepend desktop">
@@ -93,178 +61,92 @@
                 </div>
               </div>
             </div>
-
           </div>
+
           <div class='col-12'>
-
-            <div class='row without-border'>
-              <div class='col-11 without-border'>
-                <div class="form-group">
-                  <div class="input-group">
-                    <div class="input-group-prepend desktop">
-                      <div class="input-group-text">
-                        <i class="fas fa-map-marked-alt"></i>CEP
-                      </div>
-                    </div>
-                    <!-- desktop -->
-                    <input type="tel" class="form-control desktop" placeholder="Informe seu CEP" mask="00000-000" [(ngModel)]="user.cep" formControlName="cep"
-                      name="cep" (blur)='getZipcode(user.cep)' required>
-
-                    <!-- mobile -->
-                    <i class="fas fa-map-marked-alt mobile mobile-icon"></i>
-                    <input type="tel" class="form-control mobile" placeholder="CEP" mask="00000-000" [(ngModel)]="user.cep" formControlName="cep"
-                      name="cep" required>
-                    <div class="valid-feedback">
-                      <i class="fas fa-check"></i>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              <div class='search-btn col-1'>
-                <button class='button with-background default border-bottom' (click)='getZipcode(user.cep)'>
-                  <i class="fas fa-search"></i>
-                </button>
-              </div>
-            </div>
-
-            <div *ngIf="isValid('cep') || invalidZipcode" class='error-message'>
-              Por favor, preencha um CEP válido.
-            </div>
-
-          </div>
-          <div *ngIf='hasZipCode' class='col-12 address without-border'>
-            <div class='col-12'>
-
-              <div class="form-group">
-                <div class="input-group">
-                  <div class="input-group-prepend desktop">
-                    <div class="input-group-text">
-                      <i class="fas fa-map-marked-alt"></i>Bairro
-                    </div>
-                  </div>
-                  <!-- desktop -->
-                  <input type="text" class="form-control desktop" disabled='true' placeholder="Bairro" name='neighborhood' [(ngModel)]='user.neighborhood'
-                    formControlName='neighborhood' required>
-
-                  <!-- mobile -->
-                  <i class="fas fa-map-marked-alt mobile mobile-icon"></i>
-                  <input type="tel" class="form-control mobile" disabled='true' placeholder="Bairro" name='neighborhood' [(ngModel)]='user.neighborhood'
-                    formControlName='neighborhood' required>
-                  <div class="valid-feedback">
-                    <i class="fas fa-check"></i>
-                  </div>
-                </div>
-              </div>
-
-            </div>
-            <div class='col-12'>
-
-              <div class="form-group">
-                <div class="input-group">
-                  <div class="input-group-prepend desktop">
-                    <div class="input-group-text">
-                      <i class="fas fa-map-marked-alt"></i>Cidade
-                    </div>
-                  </div>
-                  <!-- desktop -->
-                  <input type="text" class="form-control desktop" disabled='true' placeholder="Cidade" name='city' [(ngModel)]='user.city'
-                    formControlName='city' required>
-
-                  <!-- mobile -->
-                  <i class="fas fa-map-marked-alt mobile mobile-icon"></i>
-                  <input type="tel" class="form-control mobile" disabled='true' placeholder="Cidade" name='city' [(ngModel)]='user.city' formControlName='city'
-                    required>
-                  <div class="valid-feedback">
-                    <i class="fas fa-check"></i>
-                  </div>
-
-                  <div *ngIf="isValid('city')" class='error-message'>
-                    Preencha com a sua cidade.
-                  </div>
-                </div>
-              </div>
-
-            </div>
-            <div class='col-12'>
-
-              <div class="form-group">
-                <div class="input-group">
-                  <div class="input-group-prepend desktop">
-                    <div class="input-group-text">
-                      <i class="fas fa-map-marked-alt"></i>Estado
-                    </div>
-                  </div>
-                  <!-- desktop -->
-                  <input type="text" class="form-control desktop" disabled='true' placeholder="Estado" name='state' [(ngModel)]='user.state'
-                    formControlName='state' required>
-
-                  <!-- mobile -->
-                  <i class="fas fa-map-marked-alt mobile mobile-icon"></i>
-                  <input type="tel" class="form-control mobile" disabled='true' placeholder="Estado" [(ngModel)]='user.state' formControlName='state'
-                    name='state' required>
-                  <div class="valid-feedback">
-                    <i class="fas fa-check"></i>
-                  </div>
-
-                  <div *ngIf="isValid('state')" class='error-message'>
-                    Preencha com o seu estado.
-                  </div>
-                </div>
-              </div>
-
-            </div>
-          </div>
-          <div class='col-12'>
-
             <div class="form-group">
+              <div class="input-group">
+                <div class="input-group-prepend desktop">
+                  <div class="input-group-text">
+                    <i class="fas fa-envelope"></i>E-mail
+                  </div>
+                </div>
+                <!-- desktop -->
+                <input type="email" class="form-control desktop" placeholder="Relaxa, nós também não gostamos de spam" [(ngModel)]="user.email"
+                  formControlName="email" name="email" required>
+
+                <!-- mobile -->
+                <i class="fas fa-envelope mobile mobile-icon"></i>
+                <input type="email" class="form-control mobile" placeholder="E-mail" (blur)="checkEmail()" [(ngModel)]="user.email" formControlName="email"
+                  name="email" required>
+                <div class="valid-feedback">
+                  <i class="fas fa-check"></i>
+                </div>
+                <div *ngIf="isValid('email')" class='error-message'>
+                  Preencha com o seu email.
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class='col-12'>
+            <div class="form-group city">
               <div class="input-group select-dropdown">
                 <div class="input-group-prepend desktop">
                   <div class="input-group-text">
-                    <i class="fas fa-map-marker-alt"></i>AIESEC mais próxima</div>
+                    <i class="fas fa-map-marker-alt"></i>Cidade</div>
                 </div>
                 <i class="fas fa-map-marker-alt mobile mobile-icon"></i>
                 <div class="dropdown">
                   <div class="styled-select">
-                    <p-autoComplete [(ngModel)]="user.local_committee" [suggestions]="filteredPlaces" (completeMethod)="searchPlaces($event)"
-                      #placesAutocomplete (onFocus)="selectInput('local_committee');placesAutocomplete.handleDropdownClick();"
-                      dropdownMode="current" field="name" formControlName="local_committee_id" emptyMessage="Nenhum resultado"
-                      placeholder="Esse é o escritório que vai cuidar de você!"></p-autoComplete>
-                    <i class="fas fa-times autocomplete-clear-btn" (click)="clearField('local_committee')" *ngIf="user.local_committee.id"></i>
+                    <p-autoComplete [(ngModel)]="user.city" [suggestions]="filteredCities" (completeMethod)="searchCities($event)"
+                      #citiesAutocomplete (onFocus)="selectInput('city');citiesAutocomplete.handleDropdownClick();"
+                      dropdownMode="current" field="name" formControlName="city" emptyMessage="Nenhum resultado"
+                      placeholder="¿Donde vives?"></p-autoComplete>
+                    <i class="fas fa-times autocomplete-clear-btn" (click)="clearField('city')" *ngIf="user.city"></i>
                   </div>
                 </div>
               </div>
-              <div *ngIf="isValid('local_committee_id')" class='error-message'>
-                Selecione uma das opções
+              <div *ngIf="isValid('city')" class='error-message'>
+                Complete con su ciudad de residencia
               </div>
             </div>
-
           </div>
-          <!-- Terms -->
-          <div id="content-terms" style='width: 100%;'>
-            <div class="row forms-term">
-              <div class="col-sm-12">
-                <div>
-                  <div class='forms-terms-area'>
-                    <label for="inputTermos" class='input-terms-label'>Termos e Condições</label>
-                    <label class='forms-tem-accepted info-mobile-content'>
-                      Ao se cadastrar, você está concordando com os termos e condições da AIESEC Brasil.
-                      <br>
-                      <span style='text-decoration: underline; cursor: pointer;' (click)='openModal()'> Para ler os termos, basta clicar aqui. </span>
-                    </label>
+
+          <div class='col-12'>
+            <div class="form-group referral_type">
+              <div class="input-group select-dropdown">
+                <div class="input-group-prepend desktop">
+                  <div class="input-group-text">
+                    <i class="fas fa-map-marker-alt"></i>¿Cómo te enteraste de este programa?</div>
+                </div>
+                <i class="fas fa-map-marker-alt mobile mobile-icon"></i>
+                <div class="dropdown">
+                  <div class="styled-select">
+                    <p-autoComplete [(ngModel)]="user.referral_type" [suggestions]="filteredReferrals" [field]="'name'" (completeMethod)="searchReferrals($event)"
+                      #referralsAutocomplete (onFocus)="selectInput('referral_type');referralsAutocomplete.handleDropdownClick();"
+                      dropdownMode="current" field="referral_type" formControlName="referral_type" emptyMessage="Nenhum resultado"
+                      placeholder="Indicanos cómo llegaste a Casas Globales"></p-autoComplete>
+                    <i class="fas fa-times autocomplete-clear-btn" (click)="clearField('referral_type')" *ngIf="user.referral_type"></i>
                   </div>
                 </div>
               </div>
-            </div>
-            <div class='col-sm-12'>
-              <div class="form-group form-check text-center checkbox">
-                <input type="checkbox" class="form-check-input" [checked]="user.cellphone_contactable" id="aceitoTermos" [(ngModel)]="user.cellphone_contactable"
-                  formControlName="cellphone_contactable" name="cellphone_contactable">
-                <label class="form-check-label" for="aceitoTermos"> Gostaria de ser contatado por ligação ou mensagens no meu número de celular.</label>
+              <div *ngIf="isValid('referral_type')" class='error-message'>
+                Seleccione una opción
               </div>
-              <button type="button" (click)="submit()" [ngClass]='{"not-allowed": unableToSubmit(), "submit-form": true, "btn-primary": true}'
+            </div>
+          </div>
+
+          <div id="content-terms" style='width: 100%;'>
+            <div class="form-group form-check text-center checkbox">
+              <input type="checkbox" class="form-check-input" [checked]="user.agreed" id="agreed" [(ngModel)]="user.agreed"
+                 formControlName="agreed" name="agreed">
+              <label class="form-check-label" for="agreed"> Comprendo que el programa es totalmente voluntario.</label>
+            </div>            
+            <div class='col-sm-12'>
+              <button type="button" (click)="submit()" [ngClass]='{"not-allowed": unableToSubmit(), "submit-form": true }'
                 [disabled]='unableToSubmit()'>
-                Enviar
+                Inscribite
                 <i class="fab fa-telegram-plane"></i>
               </button>
             </div>
@@ -275,13 +157,6 @@
     <div class='loading-content' *ngIf='loading'>
       <div class='loading'>
       </div>
-    </div>
-    <div id='modal' class='animated fadeIn faster' *ngIf="modal">
-      <div class='modal-bg' (click)='closeModal()'></div>
-      <div class='close-modal-button' (click)='closeModal()'>
-        <i class="fas fa-times-circle"></i>
-      </div>
-      <app-terms></app-terms>
     </div>
   </div>
   <div *ngIf='completeSignup'>

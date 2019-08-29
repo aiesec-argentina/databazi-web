@@ -1,6 +1,7 @@
 import { Component, OnInit, Input, EventEmitter, Output } from '@angular/core';
 import { SignupService } from '../services/signup.service';
 import { FormGroup, FormControl, Validators, FormBuilder } from '@angular/forms';
+import { DomainsService } from '../services/domains.service';
 import { Message } from 'primeng/components/common/api';
 import { TranslateService } from '../../../node_modules/@ngx-translate/core';
 import { Router, ActivatedRoute } from '@angular/router';
@@ -19,7 +20,10 @@ export class FormHostComponent implements OnInit {
 
   @Input() formedUser: any;
 
-  user = {
+  cities = [];
+  referrals = [];
+
+  user: any = {
     fullname: '',
     cellphone: '',
     email: '',
@@ -33,11 +37,14 @@ export class FormHostComponent implements OnInit {
     utm_medium: '',
     utm_campaign: '',
     utm_term: '',
-    utm_content: ''
+    utm_content: '',
+    referral_type: { id: '' },
+    agreed: true
   }
 
   modal: boolean = false;
-  filteredPlaces: Observable<any[]>;
+  filteredCities: Observable<any[]>;
+  filteredReferrals: Observable<any[]>;
 
   invalidEmail: boolean = false;
   invalidPassword: boolean = false;
@@ -47,7 +54,6 @@ export class FormHostComponent implements OnInit {
   hasZipCode: boolean = false;
   loading: boolean = false;
   signUp: FormGroup;
-  places: any;
   msgs: Message[] = [];
   submitted: boolean = false;
   completeSignup: boolean = false;
@@ -57,8 +63,13 @@ export class FormHostComponent implements OnInit {
     public translate: TranslateService,
     public router: Router,
     public urlScrapper: ActivatedRoute,
-    public http: Http
+    public http: Http,
+    private domainsService: DomainsService
   ) {
+
+    this.cities = domainsService.getCities();
+    this.referrals = domainsService.getReferralTypes();
+
     this.signUp = new FormGroup({
       fullname: new FormControl(this.user.fullname, [
         Validators.required
@@ -87,17 +98,14 @@ export class FormHostComponent implements OnInit {
       ]),
       cellphone_contactable: new FormControl(this.user.cellphone_contactable, [
         Validators.required
+      ]),
+      referral_type: new FormControl(this.user.referral_type, [
+        Validators.required
+      ]),
+      agreed: new FormControl(this.user.agreed, [
+        Validators.required
       ])
     });
-    this.detectKeypress();
-  }
-
-  detectKeypress(){
-    $(document).keyup((event) => {
-      if (this.modal && event.keyCode == 27){
-        this.closeModal()
-      }
-    })
   }
 
   ngOnInit() {
@@ -123,13 +131,17 @@ export class FormHostComponent implements OnInit {
       }
     });
 
-    this.fillPlacesSelect().then(() => {
-      this.filteredPlaces = this.signUp.controls.local_committee_id.valueChanges
-        .pipe(
-          startWith(''),
-          map(value => this._filter(value, this.places))
-        );
-    });
+    this.filteredCities = this.signUp.controls.city.valueChanges
+      .pipe(
+        startWith(''),
+        map(value => this._filter(value, this.cities))
+      );
+
+    this.filteredReferrals = this.signUp.controls.city.valueChanges
+      .pipe(
+        startWith(''),
+        map(value => this._filter(value, this.referrals))
+      );
   }
 
   private _filter(value: string, options: any): any[] {
@@ -145,22 +157,12 @@ export class FormHostComponent implements OnInit {
     return !this.signUp.controls[field].valid && (this.signUp.controls[field].dirty || this.submitted)
   }
 
-  fillPlacesSelect() {
-    return this.signupService.getLocalCommittees().then((res: any) => {
-      let orderedList = _.orderBy(res, ['name'], ['asc']);
-      this.places = orderedList;
-    }, (err) => {
-      this.msgs = [];
-      this.msgs.push({ severity: 'error', summary: 'FALHA EM RECUPERAR DADOS!', detail: 'Não foi possível recuperar os dados das AIESEC disponíveis.' });
-    })
-  }
-
   unableToSubmit() {
     return this.emptyFields()
   }
 
   emptyFields() {
-    return !(this.user.local_committee && !!this.user.local_committee.id) || !this.user.fullname || !this.user.email || !this.user.cellphone || !this.user.city || !this.user.state;
+    return !(this.user.referral_type) || !this.user.fullname || !this.user.email || !this.user.cellphone || !this.user.city || !this.user.agreed;
   }
 
   checkPhone() {
@@ -204,22 +206,20 @@ export class FormHostComponent implements OnInit {
     if (this.unableToSubmit()) {
       return;
     }
+    
     let user = {
       exchange_student_host: {
         fullname: this.user.fullname,
         cellphone: this.user.cellphone.replace(/[()_-]/g, ''),
         email: this.user.email,
-        local_committee_id: +this.user.local_committee.id,
-        neighborhood: (this.user.neighborhood ? this.user.neighborhood : 'Não encontrado'),
-        zipcode: this.user.cep,
-        city: this.user.city,
-        state: this.user.state,
-        cellphone_contactable: this.user.cellphone_contactable,
+        city: this.user.city.name,
+        referral_type: +this.user.referral_type.id,
+        local_committee: +this.user.local_committee.id,
       }
     };
     this.loading = true;
     this.redirectToForm();
-    /*this.signupService.addHostParticipant(user)
+    this.signupService.addHostParticipant(user)
       .then((res: any) => {
         this.loading = false;
         if (res.status == 'failure') {
@@ -240,7 +240,7 @@ export class FormHostComponent implements OnInit {
           this.msgs.push({ severity: 'error', summary: 'ERRO AO SALVAR!', detail: 'Não foi possível salvar, tente novamente mais tarde.' });
           this.loading = false;
         }
-      )*/
+      )
   }
 
   redirectToForm(){
@@ -248,8 +248,13 @@ export class FormHostComponent implements OnInit {
       scrollTop: ($('#host-details-form-area').offset().top)
     },500);
   }
-  searchPlaces(event) {
-    this.filteredPlaces = this._search(this.places, event.query);
+
+  searchCities(event) {
+    this.filteredCities = this._search(this.cities, event.query);
+  };
+
+  searchReferrals(event) {
+    this.filteredReferrals = this._search(this.referrals, event.query);
   };
 
   _search(options, search) {
@@ -266,25 +271,11 @@ export class FormHostComponent implements OnInit {
   };
 
   selectInput(element) {
-    $('#content-terms').css('z-index', '0');
-    $('.select-autocomplete').css('z-index', '10');
+    $('.form-group').css('z-index', '0');
+    $('.' + element).css('z-index', '10');
   }
 
   clearField(field) {
     this.user[field] = '';
-  }
-
-  openModal(){
-    this.modal = true;
-    this.toggleOverflowHtml();
-  }
-
-  closeModal(){
-    this.modal = false;
-    this.toggleOverflowHtml();
-  }
-
-  toggleOverflowHtml(){
-    this.modal ? $('html').css('overflow', 'hidden') : $('html').css('overflow', 'auto');
   }
 }

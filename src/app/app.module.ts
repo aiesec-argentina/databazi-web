@@ -22,11 +22,13 @@ import { LandingPageMenuModule } from './landing-page-menu/landing-page-menu.mod
 import { LandingFooterModule } from './landing-footer/landing-footer.module';
 import { FileValueAccessorDirective } from './file-control-value-accessor.directive';
 import { FileValidatorDirective } from './file-input-validator.directive';
-import { LandingPageHostComponent } from './landing-page-host/landing-page-host.component';
 
+import { LandingPageHostComponent } from './landing-page-host/landing-page-host.component';
 import { FormHostModule } from "./form-host/form-host.module";
 import { LandingPageHostModule } from './landing-page-host/landing-page-host.module';
 import { ContactListComponent } from './contact-list/contact-list.component';
+import { ContactListModule } from "./contact-list/contact-list.module";
+import { SliderMembershipHostComponent } from './slider-membership-host/slider-membership-host.component';
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http);
@@ -50,10 +52,10 @@ export function HttpLoaderFactory(http: HttpClient) {
   declarations: [
     AppComponent,
     LandingPageComponent,
+    LandingPageHostComponent,
     FileValueAccessorDirective,
     FileValidatorDirective,
-    LandingPageHostComponent,
-    ContactListComponent
+    SliderMembershipHostComponent
   ],
   imports: [
     BrowserModule,
@@ -75,10 +77,11 @@ export function HttpLoaderFactory(http: HttpClient) {
       }
     }),
     ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production }),
+    FormHostModule,
+    LandingPageHostModule,
     LandingPageMenuModule,
     LandingFooterModule,
-    FormHostModule,
-    LandingPageHostModule
+    ContactListModule
   ],
   providers: [
     {
