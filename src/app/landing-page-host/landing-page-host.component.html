@@ -1,0 +1,198 @@
+<head>
+  <link href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" rel="stylesheet">
+</head>
+<main>
+  <div class="goToTop" [ngx-scroll-to]="'#header-product'">
+    <i class="fas fa-sort-up"></i>
+  </div>
+
+  <app-landing-page-menu></app-landing-page-menu>
+
+  <section class="product-description padding-top-and-bottom-host">
+    <div class="container">
+      <div class="row">
+        <div class='col-md-12 logo-container'>
+          <div class='colored-logo'></div>
+        </div>
+        <div class="description col-lg-7 col-sm-12 col-md-12">
+          <h2 class="bold">
+            Visión general del programa
+          </h2>
+          <p>
+            El programa Casas Globales de AIESEC le brinda una experiencia de aprendizaje multicultural. Se puede ofrecerse como voluntario para recibir un intercambista de 6 a 12 semanas. 
+            <br>
+            ¡Es una oportunidad de colocar un idioma extranjero en practico, conocer nuevas culturas y vivir una experiencia super diversa!
+            <br>
+            ¡Mira el video de uno de nuestros participantes!
+          </p>
+            
+        </div>
+        <div class="col-lg-5 col-sm-12 col-md-12 margin-top-and-bottom-host">
+          <iframe width="100%" height="315" src="https://www.youtube.com/embed/uWpROPW6FNA" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+            allowfullscreen></iframe>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="faq middle2 padding-top-and-bottom-host">
+    <div class="container">
+      <div class="row">
+        <div class="faq-image background-default col-lg-5 col-sm-12 col-md-12">
+          <div class="round icon circle"></div>
+        </div>
+        <div class="faq-info col-lg-7 col-sm-12 col-md-12">
+          <h2 class='bold'>
+            ¿Por qué alojar un estudiante de intercambio?
+          </h2>
+          <div class="row">
+            <div class="col-sm-12">
+              <div class="list-icon"><i class="far fa-check-circle"></i></div>
+              <p class='lighter'>
+                <strong>Intercambios culturales</strong>: desde cocinar, escuchar música y bailar hasta los hábitos más pequeños. Llevarse bien con alguien de otro país, ¡ciertamente nos da un increíble diálogo multicultural! ¡Elige conectarte con el mundo!
+              </p>
+            </div>
+            <div class="col-sm-12">
+              <div class="list-icon"><i class="far fa-check-circle"></i></div>
+              <p class='lighter'>
+                <strong>Nuevas experiencias</strong>: sabemos que la rutina puede ser agotadora a veces, ¿verdad? ¡Ahora imagina hacer lo que haces todos los días con una nueva persona a tu lado! Revolucione su rutina con la increíble experiencia de recibir a un extranjero en su casa.
+              </p>
+            </div>
+            <div class="col-sm-12">
+              <div class="list-icon"><i class="far fa-check-circle"></i></div>
+              <p class='lighter'>
+                <strong>Aprende un nuevo idioma en la práctica</strong>: ¿Alguna vez quiso aprender un nuevo idioma pero no tiene el tiempo, el dinero o la cabeza para un curso formal? Los estudios dicen que aprender un nuevo idioma a diario es la mejor manera de ejercitar el conocimiento y activar las conexiones cerebrales. Imagina receber una persona que habla portugues o ingles para ensenarte!
+              </p>
+            </div>
+            <div class="col-sm-12">
+              <button (click)='redirectToForm()' class="centered without-border bold with-background  host">
+                Inscribite
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="host-details" id='host-details-form-area'>
+    <div class="container">
+      <div class="row host-header" id="host-header">
+        <div class='col-lg-12 col-sm-12 col-md-12 logo-container'>
+          <div class='logo'></div>
+        </div>
+      </div>
+      <div class='row'>
+        <div class='col-lg-12 col-sm-12 col-md-12'>
+          <app-form-host></app-form-host>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="faq middle1 padding-top-and-bottom-host">
+    <div class="container">
+      <div class="row">
+        <div class="faq-info col-lg-7 col-sm-12 col-md-12 margin-top-and-bottom-host">
+          <h2 class='bold'>
+            FAQ - Dudas frecuentes
+          </h2>
+          <div class="row">
+            <div class="col-sm-12">
+              <h3 class='semibold'>
+                ¿Qué es un requisito previo para participar?
+              </h3>
+              <p class='lighter italic justify'>
+                La experiencia es, entre otras cosas, sobre la experiencia práctica de un nuevo idioma y esta puede ser una gran oportunidad para aprender, pero no es necesario que sepa otros idiomas. Para alojar a un estudiante de intercambio, solo tiene que estar disponible durante 6 a 12 semanas, tener un lugar para que duerma el estudiante de intercambio (¡que no tiene que ser una habitación individual!), Proporcionar acceso a las áreas comunes de la casa y el uso de agua y electricidad sin Costes adicionales para el estudiante de intercambio.
+              </p>
+            </div>
+            <div class="col-sm-12">
+              <h3 class='semibold'>
+                ¿Qué aspecto tiene el soporte AIESEC para el host? ¿AIESEC paga algo?
+              </h3>
+              <p class='lighter italic justify'>
+                No hay costo o recompensa por hospedaje, el objetivo es recibir a un estudiante de intercambio voluntariamente. AIESEC se reunirá con usted y le presentará al estudiante de intercambio, así como un seguimiento semanal durante la experiencia para averiguar cómo van las cosas y brindar ayuda según sea necesario. Además, es responsabilidad de AIESEC proporcionar un espacio de inducción y contacto para responder todas las preguntas antes de que llegue el estudiante de intercambio. Siempre estamos disponibles y abiertos a ayudar!
+              </p>
+            </div>
+            <div class="col-sm-12">
+              <h3 class='semibold'>
+                ¿Quiénes son los estudiantes de intercambio que viajan en AIESEC?
+              </h3>
+              <p class='lighter italic justify'>
+                Son jóvenes de 18 a 30 años que buscan desarrollar liderazgo a través de intercambios interculturales proporcionados por la organización. Los estudiantes de intercambio que vienen aquí generalmente provienen de diferentes países, principalmente de América Latina y Europa, y participan voluntariamente en proyectos de impacto social y profesional en 10 ciudades de Argentina.
+              </p>
+            </div>
+          </div>
+        </div>
+        <div class="faq-image background-default col-lg-5 col-sm-12 col-md-12">
+          <div class="round icon circle"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section class='know-aiesec with-background host'>
+    <div class="container">
+      <div class="row">
+        <div class="aiesec-image background-default col-lg-6 col-sm-12 col-md-12">
+          <div class="round icon circle"></div>
+        </div>
+        <div class="aiesec-info col-lg-6 col-sm-12 col-md-12 margin-top-and-bottom-host">
+          <div class="row">
+            <div class='col-12'>
+              <h1>
+                ¿Cómo funciona el experimento?
+              </h1>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-lg-2 col-md-12 col-sm-12 centered">
+              <div class="round circle icon without-background gt"></div>
+            </div>
+            <div class="col-lg-10 col-md-12 col-sm-12">
+              <h3 class="bold line-height-lower darker">
+                Contacto
+              </h3>
+              <p class="lighter ">
+                Después de que se registre, revisaremos la información de alojamiento que proporcionará y nos pondremos en contacto con usted.
+              </p>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-lg-2 col-md-12 col-sm-12 centered">
+              <div class="round circle icon without-background gt"></div>
+            </div>
+            <div class="col-lg-10 col-md-12 col-sm-12">
+              <h3 class="bold line-height-lower darker">
+                Recepción
+              </h3>
+              <p class="lighter ">
+                Tan pronto como el joven sea asignado a su familia, le informaremos para que pueda acompañarlo y darle la bienvenida.
+              </p>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-lg-2 col-md-12 col-sm-12 centered">
+              <div class="round circle icon without-background gt"></div>
+            </div>
+            <div class="col-lg-10 col-md-12 col-sm-12">
+              <h3 class="bold line-height-lower darker">
+                Apoyo
+              </h3>
+              <p class="lighter ">
+                A través del seguimiento, nos aseguraremos de que ambas partes tengan una buena experiencia.”
+              </p>
+            </div>
+          </div>
+          <div class='row'>
+            <div class='col-12'>
+              <button (click)='redirectToForm()' class="border-radius centered without-border with-background default">
+                Inscribite
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+<app-landing-footer></app-landing-footer>

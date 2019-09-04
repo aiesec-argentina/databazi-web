@@ -20,6 +20,7 @@ $default: #3f77bc;
 $primary-gv: #ef4231;
 $primary-ge: #41bb9b;
 $primary-gt: #0b8ea0;
+$primary-host: #f1c40f;
 $white: #fff;
 $highlight: #fcb215;
 // typography
@@ -145,6 +146,9 @@ button {
         &.gt {
             background-color: $primary-gt;
         }
+        &.host{
+            background-color: $primary-host
+        }
     }
     &.background-white {
         background-color: #fff;
@@ -230,6 +234,12 @@ section, footer, div {
     &.padding-top-and-bottom {
         padding: 75px 0 !important
     }
+    &.margin-top-and-bottom-host {
+        margin: 35px 0 !important;
+    }
+    &.padding-top-and-bottom-host {
+        padding: 35px 0 !important
+    }
     &.with-background {
         h1,
         h2,
@@ -248,6 +258,9 @@ section, footer, div {
         }
         &.gt {
             background-color: $primary-gt;
+        }
+        &.host{
+            background-color: $primary-host
         }
         &.default {
             background-color: $default;
