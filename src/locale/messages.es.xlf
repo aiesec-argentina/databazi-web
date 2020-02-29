@@ -312,13 +312,13 @@
           <context context-type="linenumber">200</context>
         </context-group>
       <target>AIESEC es el movimiento de liderazgo jóven más grande del mundo</target></trans-unit>
-      <trans-unit id="ourPremiumPartners" datatype="html">
+      <trans-unit id="ourPartners" datatype="html">
         <source>Os nossos parceiros premium</source>
         <context-group purpose="location">
           <context context-type="sourcefile">app/landing-footer/landing-footer.component.html</context>
           <context context-type="linenumber">7</context>
         </context-group>
-      <target>Nuestros aliados premium</target></trans-unit>
+      <target>Nuestros aliados</target></trans-unit>
       <trans-unit id="footerText" datatype="html">
         <source>Aventure-se nessa nova experiência e alcance o seu potencial!</source>
         <context-group purpose="location">

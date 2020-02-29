@@ -39,6 +39,7 @@
     "ngx-drag-scroll": "^2.0.0-beta.6",
     "ngx-filepond": "^5.0.1",
     "ngx-mask": "^6.5.18",
+    "node-sass": "^4.13.1",
     "primeng": "^6.1.2",
     "rxjs": "^6.3.3",
     "zone.js": "^0.8.26"

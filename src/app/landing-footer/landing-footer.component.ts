@@ -32,19 +32,9 @@ export class LandingFooterComponent implements OnInit {
 
       this.partners = [
         {
-          title: 'Aerlíneas Argentinas',
-          img: webpSupport ? '../../assets/images/partners/aerolineasargentinas.png.webp' : '../../assets/images/partners/aerolineasargentinas.png',
-          site: 'https://www.aerolineas.com.ar/',
-        },
-        {
           title: 'Aneic',
           img: webpSupport ? '../../assets/images/partners/aneic.png.webp' : '../../assets/images/partners/aneic.png',
           site: 'https://www.facebook.com/ANEICArgen/',
-        },
-        {
-          title: 'April',
-          img: webpSupport ? '../../assets/images/partners/april.png.webp' : '../../assets/images/partners/april.png',
-          site: 'http://bit.ly/Seguros-AIESECArgentina',
         },
         {
           title: 'Banco de Alimentos',
@@ -69,27 +59,9 @@ export class LandingFooterComponent implements OnInit {
 
         },
         {
-          title: 'GSK',
-          img: webpSupport ? '../../assets/images/partners/gsk.png.webp' : '../../assets/images/partners/gsk.png',
-          site: 'https://ar.gsk.com/', 
-
-        },
-        {
-          title: 'unjuve',
-          img: webpSupport ? '../../assets/images/partners/injuve.jpg.webp' : '../../assets/images/partners/injuve.jpg',
-          site: 'http://www.injuve.gob.sv/',
-
-        },
-        {
           title: 'JCI',
           img: webpSupport ? '../../assets/images/partners/jci.png.webp' : '../../assets/images/partners/jci.png',
           site: 'https://jciargentina.org.ar/',
-        },
-        {
-          title: 'Scalabl',
-          img: webpSupport ? '../../assets/images/partners/scalabl.png.webp' : '../../assets/images/partners/scalabl.png',
-          site: 'https://www.scalabl.com/academy/buenos-aires-startup-academy/?gclid=Cj0KCQiA-onjBRDSARIsAEZXcKbjNL1sPADH-vzzFLkcHI17goK5Tt3tUK2R1IZd5J88wqAzwnM03ToaAgYfEALw_wcB',
-
         },
         {
           title: 'Scouts',
@@ -109,15 +81,25 @@ export class LandingFooterComponent implements OnInit {
           site: 'https://www.techo.org/argentina/',
         },
         {
-          title: 'Unicef',
-          img: webpSupport ? '../../assets/images/partners/unicef.png.webp' : '../../assets/images/partners/unicef.png',
-          site: 'https://www.unicef.org/argentina/',
-        },
-        {
           title: 'Unilever',
           img: webpSupport ? '../../assets/images/partners/unilever.png.webp' : '../../assets/images/partners/unilever.png',
           site: 'https://www.unilever.com.ar/',
-        }
+        },
+        {
+          title: 'Assist 365',
+          img: webpSupport ? '../../assets/images/partners/365assist.webp' : '../../assets/images/partners/365assist.png',
+          site: 'https://www.assist-365.com/',
+        },
+        {
+          title: 'Flecha Buss',
+          img: webpSupport ? '../../assets/images/partners/FlechaBus.webp' : '../../assets/images/partners/Flecha-bus.png',
+          site: 'https://www.flechabus.com.ar/',
+        },
+        {
+          title: 'RACI',
+          img: webpSupport ? '../../assets/images/partners/RACI.webp' : '../../assets/images/partners/RACI.png',
+          site: 'https://raci.org.ar/',
+        },
       ];
     });
   }
